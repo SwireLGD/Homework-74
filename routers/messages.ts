@@ -6,7 +6,7 @@ const path = 'messages';
 const messagesRouter = express.Router();
 
 messagesRouter.post('/', async (req, res) => {
-    const datetime = new Date().toISOString();
+    const datetime = new Date().toISOString().replace(/[:.]/g, '-');
     const fileName = `${datetime}.txt`;
     const filePath = `${path}/${fileName}`;
     const message: Message = {...req.body, datetime};
